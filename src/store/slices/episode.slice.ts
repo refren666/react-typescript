@@ -18,7 +18,10 @@ const initialState: IEpisodeState = {
 export const getAllEpisodes = createAsyncThunk(
   'episodeSlice/getAllEpisodes',
   async (_, {dispatch, getState}) => {
-    const {currentPage} = getState().episodeReducer
+    // const {currentPage} = getState().episodeReducer
+    const {episodeReducer} = getState() as {episodeReducer: IEpisodeState}
+    const {currentPage} = episodeReducer
+
     const {data: {results}} = await episodeService.getAllPage(currentPage)
     dispatch(setEpisodes(results))
   }

@@ -8,5 +8,6 @@ export interface ICharacter {
   location: {
     name: string
   },
-  image: string
+  image: string,
+  split: Function
 }

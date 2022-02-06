@@ -1,3 +1,5 @@
+import {ICharacter} from "./character.interface";
+
 export interface IEpisode {
   id: number,
   name: string,
@@ -5,6 +7,6 @@ export interface IEpisode {
   episode: string,
   created?: string,
   url?: string,
-  characters?: any[]
+  characters?: ICharacter[]
 }
 
