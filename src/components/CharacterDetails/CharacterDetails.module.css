@@ -1,0 +1,13 @@
+.imageBlock {
+    margin-bottom: 7px;
+}
+
+.characterImage {
+    transition: all .2s ease-in-out;
+    width: 100%;
+    height: 100%;
+}
+
+.characterImage:hover {
+    transform: scale(1.05);
+}

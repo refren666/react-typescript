@@ -17,8 +17,9 @@ const initialState: IEpisodeState = {
 
 export const getAllEpisodes = createAsyncThunk(
   'episodeSlice/getAllEpisodes',
-  async (_, {dispatch}) => {
-    const {data: {results}} = await episodeService.getAllPage(initialState.currentPage)
+  async (_, {dispatch, getState}) => {
+    const {currentPage} = getState().episodeReducer
+    const {data: {results}} = await episodeService.getAllPage(currentPage)
     dispatch(setEpisodes(results))
   }
 )
@@ -40,6 +41,16 @@ const episodeSlice = createSlice({
     },
     setEpisode: (state, action:PayloadAction<IEpisode>) => {
       state.episode = action.payload
+    },
+    moveToNextPage: (state) => {
+      if (state.currentPage !== 3) {
+        state.currentPage+=1
+      }
+    },
+    moveToPrevPage: (state) => {
+      if (state.currentPage !== 1) {
+        state.currentPage-=1
+      }
     }
   }
 })
@@ -48,4 +59,4 @@ const episodeReducer = episodeSlice.reducer;
 
 export default episodeReducer;
 
-export const {setEpisodes, setEpisode} = episodeSlice.actions;
+export const {setEpisodes, setEpisode, moveToNextPage, moveToPrevPage} = episodeSlice.actions;

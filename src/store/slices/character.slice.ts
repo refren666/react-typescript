@@ -10,8 +10,8 @@ const initialState:{characters: ICharacter[]} = {
 export const getAllCharacters = createAsyncThunk<void, {id: string | undefined}>(
   'characterSlice/getAllCharacters',
   async ({id}, {dispatch}) => {
-    const {data: {results}} = await characterService.getAllById(id)
-    dispatch(setCharacters(results));
+    const {data} = await characterService.getAllById(id)
+    dispatch(setCharacters(data));
   }
 )
 

@@ -12,7 +12,7 @@ const EpisodeDetails:FC<{episode: IEpisode}> = ({episode}) => {
   const dispatch = useAppDispatch();
   const {characters: episodeCharacters} = episode;
 
-  const charactersId = episodeCharacters
+  const charactersId = episodeCharacters && episodeCharacters
     .map(characterURL => characterURL.split('/'))
     .map(arr => arr[arr.length - 1])
     .toString();
@@ -21,16 +21,14 @@ const EpisodeDetails:FC<{episode: IEpisode}> = ({episode}) => {
     dispatch(getAllCharacters({ id: charactersId }))
   }, [])
 
-  console.log(characters)
-
   return (
     <div>
       <EpisodeHeader episodeInfo={episode}/>
 
       <div className={classes.charactersWrapper}>
-        {/*{characters.map(*/}
-        {/*  character => <CharacterDetails key={character.id} characterInfo={character}/>*/}
-        {/*)}*/}
+        {characters.map(
+          character => <CharacterDetails key={character.id} characterInfo={character}/>
+        )}
       </div>
     </div>
   );

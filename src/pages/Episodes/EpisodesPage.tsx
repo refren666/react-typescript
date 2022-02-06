@@ -2,18 +2,18 @@ import React, {FC, useEffect} from 'react';
 import {Link} from "react-router-dom";
 
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
-import {getAllEpisodes} from "../../store/slices/episode.slice";
+import {getAllEpisodes, moveToNextPage, moveToPrevPage} from "../../store/slices/episode.slice";
 import Episode from "../../components/Episode/Episode";
 import classes from './EpisodesPage.module.css'
 
 
 const EpisodesPage: FC = () => {
-  const {episodes} = useAppSelector(state => state.episodeReducer)
+  const {episodes, currentPage} = useAppSelector(state => state.episodeReducer)
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getAllEpisodes());
-  }, [])
+  }, [currentPage])
 
   return (
     <div>
@@ -27,10 +27,10 @@ const EpisodesPage: FC = () => {
 
       <div className={classes.buttonsBlock}>
         <Link to={'/'}>
-          <button className={classes.button}>Prev</button>
+          <button className={classes.button} onClick={() => dispatch(moveToPrevPage())}>Prev</button>
         </Link>
         <Link to={'/'}>
-          <button className={classes.button}>Next</button>
+          <button className={classes.button} onClick={() => dispatch(moveToNextPage())}>Next</button>
         </Link>
       </div>
     </div>
