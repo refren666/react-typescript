@@ -1,0 +1,10 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+    background-color: firebrick;
+    color: snow;
+    margin-bottom: 25px;
+    align-items: center;
+    row-gap: 5px;
+}

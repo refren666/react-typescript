@@ -1,0 +1,27 @@
+.episodeBlock {
+    background-color: #f8dd3c;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 10px;
+}
+
+.episodeInfo {
+    display: flex;
+    flex-direction: column;
+    row-gap: 7px;
+}
+
+.episodeLink {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 3px 6px;
+    background-color: firebrick;
+}
+
+.episodeLink:hover {
+    color: black;
+    background-color: white;
+}
